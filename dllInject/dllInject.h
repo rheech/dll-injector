@@ -1,4 +1,4 @@
-// mfcDllInjector.h : main header file for the PROJECT_NAME application
+// dllInject.h : main header file for the PROJECT_NAME application
 //
 
 #pragma once
@@ -10,14 +10,14 @@
 #include "resource.h"		// main symbols
 
 
-// CmfcDllInjectorApp:
-// See mfcDllInjector.cpp for the implementation of this class
+// CdllInjectApp:
+// See dllInject.cpp for the implementation of this class
 //
 
-class CmfcDllInjectorApp : public CWinApp
+class CdllInjectApp : public CWinApp
 {
 public:
-	CmfcDllInjectorApp();
+	CdllInjectApp();
 
 // Overrides
 	public:
@@ -28,4 +28,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CmfcDllInjectorApp theApp;
+extern CdllInjectApp theApp;

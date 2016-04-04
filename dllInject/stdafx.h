@@ -70,13 +70,9 @@
 #endif
 #endif
 
+// include doc
+#include "CdllInjectDoc.h"
 
-// Toolhelp32Snapshot
-#include <Tlhelp32.h>
 
-#include "DLLInject.h"
-// PathStripPath
-#include "Shlwapi.h"
-
-#include "CMyEdit.h"
-
+BOOL InjectDll(DWORD dwPID, char *szDllName);
+BOOL EjectDll(DWORD dwPID, LPCTSTR szDllName);

@@ -48,7 +48,7 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
     "LANGUAGE 18, 1\r\n"
     "#pragma code_page(949)\r\n"
-    "#include ""res\\mfcDllInjector.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""res\\dllInject.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
     "#include ""afxres.rc""     // Standard components\r\n"
     "#endif\r\n"
     "\0"
@@ -64,7 +64,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\mfcDllInjector.ico"
+IDR_MAINFRAME           ICON                    "res\\dllInject.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -73,33 +73,37 @@ IDR_MAINFRAME           ICON                    "res\\mfcDllInjector.ico"
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About mfcDllInjector"
+CAPTION "About Advanced DLL Injector"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "mfcDllInjector Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2011",IDC_STATIC,40,25,119,8
+    LTEXT           "Advanced DLL Injector Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Created by rheech., All rights reserved. ",IDC_STATIC,40,23,162,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+    LTEXT           "http://rheech.tistory.com",IDC_STATIC,40,35,121,8
 END
 
-IDD_MFCDLLINJECTOR_DIALOG DIALOGEX 0, 0, 322, 273
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+IDD_DLLINJECT_DIALOG DIALOGEX 0, 0, 365, 201
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "mfcDllInjector"
+CAPTION "Advanced DLL Injector"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    EDITTEXT        IDC_EDIT1,72,16,228,14,ES_AUTOHSCROLL | WS_DISABLED
-    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,22,70,278,171
-    LTEXT           "PID:",IDC_STATIC,25,19,15,8
-    EDITTEXT        IDC_EDIT2,72,33,170,14,ES_AUTOHSCROLL
-    LTEXT           "ImageName:",IDC_STATIC,25,36,42,8
-    PUSHBUTTON      "Search",IDC_BUTTON1,250,33,50,14
-    LTEXT           "DLL Path:",IDC_STATIC,25,52,32,8
-    EDITTEXT        IDC_EDIT3,72,50,169,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "Browse",IDC_BUTTON2,250,50,50,14
-    CONTROL         "Auto Update",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,248,57,10
-    PUSHBUTTON      "Inject",IDC_BUTTON3,132,245,50,14
-    PUSHBUTTON      "Refresh",IDC_BUTTON4,250,245,50,14
-    PUSHBUTTON      "Eject",IDC_BUTTON5,191,245,50,14
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,158,187
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,173,12,185,40
+    LTEXT           "DLL Path",IDC_STATIC,180,8,29,8
+    EDITTEXT        IDC_EDIT1,183,25,119,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Browse",IDC_BUTTON1,306,25,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,173,63,185,37
+    CONTROL         "Enable Automatic Inject ",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,59,94,10
+    LTEXT           "Process Name:",IDC_STATIC,183,79,48,8
+    EDITTEXT        IDC_EDIT2,236,78,67,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Start",IDC_BUTTON5,306,78,50,14,WS_DISABLED
+    EDITTEXT        IDC_EDIT4,173,107,185,52,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Inject",IDC_BUTTON2,173,165,67,29
+    PUSHBUTTON      "Eject",IDC_BUTTON3,260,165,67,29
+    PUSHBUTTON      "C",IDC_BUTTON4,339,165,19,14
+    PUSHBUTTON      "A",IDC_BUTTON6,339,180,19,14
 END
 
 
@@ -125,13 +129,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "TODO: <Company name>"
-            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "CompanyName", "http://rheech.tistory.com/"
+            VALUE "FileDescription", "Advanced DLL Injector"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "mfcDllInjector.exe"
-            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
-            VALUE "OriginalFilename", "mfcDllInjector.exe"
-            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "InternalName", "dllInject.exe"
+            VALUE "LegalCopyright", "(c) rheech.  All rights reserved."
+            VALUE "OriginalFilename", "dllInject.exe"
+            VALUE "ProductName", "Advanced DLL Injector"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END
@@ -158,12 +162,12 @@ BEGIN
         BOTTOMMARGIN, 48
     END
 
-    IDD_MFCDLLINJECTOR_DIALOG, DIALOG
+    IDD_DLLINJECT_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 315
+        RIGHTMARGIN, 358
         TOPMARGIN, 7
-        BOTTOMMARGIN, 266
+        BOTTOMMARGIN, 194
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -176,7 +180,7 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUTBOX            "&About mfcDllInjector..."
+    IDS_ABOUTBOX            "&About dllInject..."
 END
 
 #endif    // Korean resources
@@ -197,7 +201,7 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
 LANGUAGE 18, 1
 #pragma code_page(949)
-#include "res\mfcDllInjector.rc2"  // non-Microsoft Visual C++ edited resources
+#include "res\dllInject.rc2"  // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"     // Standard components
 #endif
 

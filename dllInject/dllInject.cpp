@@ -1,39 +1,39 @@
-// mfcDllInjector.cpp : Defines the class behaviors for the application.
+// dllInject.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
-#include "mfcDllInjector.h"
-#include "mfcDllInjectorDlg.h"
+#include "dllInject.h"
+#include "dllInjectDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CmfcDllInjectorApp
+// CdllInjectApp
 
-BEGIN_MESSAGE_MAP(CmfcDllInjectorApp, CWinApp)
+BEGIN_MESSAGE_MAP(CdllInjectApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CmfcDllInjectorApp construction
+// CdllInjectApp construction
 
-CmfcDllInjectorApp::CmfcDllInjectorApp()
+CdllInjectApp::CdllInjectApp()
 {
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
 
-// The one and only CmfcDllInjectorApp object
+// The one and only CdllInjectApp object
 
-CmfcDllInjectorApp theApp;
+CdllInjectApp theApp;
 
 
-// CmfcDllInjectorApp initialization
+// CdllInjectApp initialization
 
-BOOL CmfcDllInjectorApp::InitInstance()
+BOOL CdllInjectApp::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -58,12 +58,11 @@ BOOL CmfcDllInjectorApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CmfcDllInjectorDlg dlg;
+	CdllInjectDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
-		MessageBoxA(0, "AS", "AS", 0);
 		// TODO: Place code here to handle when the dialog is
 		//  dismissed with OK
 	}
